@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM Selection Assignment</title>
+</head>
+
+<body>
+
+    <div id="main">
+
+        <h1 class="title">My Page</h1>
+
+        <ul class="menu">
+            <li class="item">Home</li>
+            <li class="item active">About</li>
+            <li class="item">Contact</li>
+        </ul>
+
+        <p id="intro" class="text">Welcome to the site.</p>
+        <p class="text">This is a paragraph.</p>
+
+        <button id="btn1" class="btn">Click Me</button>
+        <button class="btn">Another Button</button>
+
+    </div>
+    <div>
+        <!-- Part A 
+1.
+It selects one element based on its unique id. It returns a single element or null if no matching element exists.
+2.
+It returns an HTMLCollection containing all elements with the specified class. It is a live collection, meaning it automatically updates when the DOM changes.
+3. 
+It returns an HTMLCollection containing all elements with the specified tag name.
+Example:
+document.getElementsByTagName("p");
+This selects all <p> elements.
+4.
+querySelector() → returns the first matching element.
+querySelectorAll() → returns all matching elements as a static NodeList.
+Example:
+document.querySelector(".item");
+Returns the first .item.
+document.querySelectorAll(".item");
+Returns all .item elements.
+
+5. The two methods that return a live collection are:
+getElementsByClassName()
+getElementsByTagName()
+
+A live collection automatically updates when the DOM changes.
+
+getElementsByClassName()  // Live HTMLCollection
+getElementsByTagName()     // Live HTMLCollection
+-->
+    </div>
+
+
+    <script>
+
+        // =====================================================
+        // PART B: PRACTICE TASKS
+        // =====================================================
+
+
+        // 6. Using getElementById
+        // Select the <p id="intro"> element
+
+        let intro = document.getElementById("intro");
+
+        console.log("6. Intro element:");
+        console.log(intro);
+
+
+        // 7. Using getElementsByClassName
+        // Select all elements with class "item"
+        // and log how many there are
+
+        let items = document.getElementsByClassName("item");
+
+        console.log("7. Number of .item elements:");
+        console.log(items.length);
+
+
+        // 8. Using getElementsByTagName
+        // Select all <button> elements
+
+        let buttons = document.getElementsByTagName("button");
+
+        console.log("8. Number of buttons:");
+        console.log(buttons.length);
+
+
+        // 9. Using getElementsByClassName
+        // Select all elements with class "text"
+        // and change their font size to 20px
+
+        let texts = document.getElementsByClassName("text");
+
+        for (let i = 0; i < texts.length; i++) {
+            texts[i].style.fontSize = "20px";
+        }
+
+        console.log("9. All .text elements changed to 20px");
+
+
+        // 10. Using querySelector
+        // Select the single element with class "active"
+
+        let activeItem = document.querySelector(".active");
+
+        console.log("10. Active element:");
+        console.log(activeItem);
+
+
+        // 11. Using querySelectorAll
+        // Select all <li> elements with class "item"
+
+        let listItems = document.querySelectorAll("li.item");
+
+        console.log("11. All li.item elements:");
+        console.log(listItems);
+
+
+        // 12. Using getElementsByTagName
+        // Select all <p> tags and add a border to each
+
+        let paragraphs = document.getElementsByTagName("p");
+
+        for (let i = 0; i < paragraphs.length; i++) {
+            paragraphs[i].style.border = "2px solid black";
+        }
+
+        console.log("12. Border added using getElementsByTagName");
+
+
+        // Now do the same using querySelectorAll
+
+        let allParagraphs = document.querySelectorAll("p");
+
+        for (let i = 0; i < allParagraphs.length; i++) {
+            allParagraphs[i].style.border = "2px solid blue";
+        }
+
+        console.log("12. Border added using querySelectorAll");
+
+
+        // =====================================================
+        // PART C: COMPARE & CHALLENGE
+        // =====================================================
+
+
+        // 13. Select all .btn elements two different ways
+
+
+        // Using getElementsByClassName
+        let btnsByClass = document.getElementsByClassName("btn");
+
+
+        // Using querySelectorAll
+        let btnsByQuery = document.querySelectorAll(".btn");
+
+
+        console.log("13. Using getElementsByClassName:");
+        console.log(btnsByClass);
+
+        console.log("Type:", Object.prototype.toString.call(btnsByClass));
+
+
+        console.log("13. Using querySelectorAll:");
+        console.log(btnsByQuery);
+
+        console.log("Type:", Object.prototype.toString.call(btnsByQuery);
+
+
+        // =====================================================
+        // 14. LIVE vs STATIC TEST
+        // =====================================================
+
+
+        let liveList = document.getElementsByClassName("item");
+
+        let staticList = document.querySelectorAll(".item");
+
+
+        console.log(
+            "14. Before:",
+            liveList.length,
+            staticList.length
+        );
+
+
+        // Create a new <li>
+        let newItem = document.createElement("li");
+
+        newItem.className = "item";
+
+        newItem.textContent = "New Item";
+
+
+        // Add new item to the menu
+        document.querySelector(".menu").appendChild(newItem);
+
+
+        console.log(
+            "14. After:",
+            liveList.length,
+            staticList.length
+        );
+
+        // 15. Using getElementsByTagName("li")
+        // Loop through all list items and log their text
+
+
+        let allLi = document.getElementsByTagName("li");
+
+        console.log("15. List item text:");
+
+        for (let i = 0; i < allLi.length; i++) {
+
+            console.log(allLi[i].textContent);
+
+        }
+
+
+    </script>
+
+</body>
+
+</html>
